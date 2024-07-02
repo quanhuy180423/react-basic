@@ -111,7 +111,7 @@ const EditStaff = () => {
                 error={!!errors.createdAt}
                 helperText={errors.createdAt}
             />
-            <Button type="submit" variant="contained">Update Staff</Button>
+            <Button type="submit" variant="contained" style={{ marginTop: '20px' }}>Update Staff</Button>
         </Box>
     );
 };

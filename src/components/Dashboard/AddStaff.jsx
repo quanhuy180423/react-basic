@@ -43,7 +43,10 @@ function AddStaff() {
     };
 
     return (
-        <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}>
+        <Box component="form" onSubmit={handleSubmit}
+            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        >
             <TextField
                 label="Name"
                 name="name"
@@ -87,7 +90,7 @@ function AddStaff() {
                     shrink: true,
                 }}
             />
-            <Button type="submit" variant="contained">Add Staff</Button>
+            <Button type="submit" variant="contained" style={{ marginTop: 20 }}>Add Staff</Button>
         </Box>
     );
 }

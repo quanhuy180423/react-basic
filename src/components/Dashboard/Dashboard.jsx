@@ -37,32 +37,35 @@ function Dashboard() {
     return (
         <div>
             <Button component={Link} to="/add-staff">Add New Staff</Button>
-            <TableContainer component={Paper}>
-                <Table>
+            <TableContainer component={Paper} >
+                <Table >
                     <TableHead>
                         <TableRow>
+                            <TableCell>No</TableCell>
                             <TableCell>Name</TableCell>
                             <TableCell>Age</TableCell>
                             <TableCell>Address</TableCell>
-                            <TableCell>Actions</TableCell>
+                            <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {staffs.map((staff) => (
+                        {staffs.map((staff, index) => (
                             <TableRow key={staff.id}>
+                                <TableCell>{index + 1}</TableCell>
                                 <TableCell>{staff.name}</TableCell>
                                 <TableCell>{staff.age}</TableCell>
                                 <TableCell>{staff.address}</TableCell>
-                                <TableCell>
+                                <TableCell sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <Button component={Link} to={`/staff/${staff.id}`}>View</Button>
                                     <Button component={Link} to={`/edit-staff/${staff.id}`}>Edit</Button>
                                     <Button onClick={() => handleDelete(staff)}>Delete</Button>
+
                                 </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
+            </TableContainer >
 
             <Dialog open={deleteDialogOpen} onClose={() => setDeleteDialogOpen(false)}>
                 <DialogTitle>Confirm Delete</DialogTitle>

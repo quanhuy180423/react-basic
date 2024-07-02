@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Card, CardContent, CardMedia, Typography, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { API_ENDPOINTS } from '../../server/server'; // Adjust the import path as needed
 
 function StaffDetail() {
@@ -18,33 +18,24 @@ function StaffDetail() {
     }, [id]);
 
     if (!staff) {
-        return <Typography>Loading...</Typography>;
+        return <p>Loading...</p>;
     }
 
     return (
         <Container maxWidth="sm">
-            <Card>
-                <CardMedia
-                    component="img"
-                    height="300"
-                    image={staff.avatar}
+            <div className="relative text-white h-72">
+                <img
+                    src={staff.avatar}
                     alt={staff.name}
+                    className="absolute inset-0 w-full h-full object-cover filter brightness-50"
                 />
-                <CardContent>
-                    <Typography gutterBottom variant="h4" component="div">
-                        {staff.name}
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                        Age: {staff.age}
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                        Address: {staff.address}
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
-                        Created Date: {new Date(staff.createdAt).toLocaleDateString()}
-                    </Typography>
-                </CardContent>
-            </Card>
+                <div className="relative z-10 p-6">
+                    <h2 className="text-4xl font-bold mb-2">{staff.name}</h2>
+                    <p className="text-lg">Age: {staff.age}</p>
+                    <p className="text-lg">Address: {staff.address}</p>
+                    <p className="text-lg">Created Date: {new Date(staff.createdAt).toLocaleDateString()}</p>
+                </div>
+            </div>
         </Container>
     );
 }
